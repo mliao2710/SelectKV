@@ -1,6 +1,6 @@
 # Reproducibility
 
-This repository contains the implementation used for the experiments in **Selective and Hybrid-State Handoff for Latent Multi-Agent Systems**. The code builds on LatentMAS and implements **SelectKV**, a selective KV-cache handoff mechanism for reducing latent multi-agent communication cost while preserving task performance.
+This repository contains the implementation used for the experiments in **Selective and Hybrid-State Communication for Latent Multi-Agent Systems**. The code builds on LatentMAS and implements **SelectKV**, a selective KV-cache handoff mechanism for reducing latent multi-agent communication cost while preserving task performance.
 
 ## Environment
 
@@ -44,7 +44,7 @@ SelectKV reduces communication overhead by selectively retaining KV-cache positi
 
 The method uses two complementary signals:
 
-1. **Receiver-conditioned relevance**, computed using cosine similarity between cached keys and the current hidden-state query/proxy.
+1. **Sender-derived relevance**, computed using cosine similarity between cached keys and a query derived from the sending agent's final hidden state.
 2. **KV-native novelty**, computed from adjacent cached-key cosine dissimilarity.
 
 The two rankings are combined using an overlap-first hybrid selection procedure.

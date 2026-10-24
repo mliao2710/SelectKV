@@ -10,6 +10,27 @@ The primary configuration, **SelectKV-90**, retains 90% of newly communicable KV
 
 ---
 
+## Code and Branches
+
+The `reproducibility` branch contains the implementation and
+experimental setup used for the paper.
+
+Key files:
+
+- `methods/selectkv_mas.py`: SelectKV implementation
+- `selectkv/`: KV selection utilities
+- `run.py`: Experiment entry point
+- `REPRODUCIBILITY.md`: Reproduction instructions
+- `logs/`: Experiment outputs
+
+Other development branches are preserved for reference:
+
+- `miles/selectkv`
+- `miles/selectkv-adaptive`
+- `miles/selectkv-rebuild`
+
+---
+
 ## Overview
 
 Latent multi-agent systems allow agents to communicate through internal model representations rather than explicit natural-language messages. However, transferring the complete KV cache between agents can introduce substantial communication and memory overhead.
@@ -18,7 +39,7 @@ SelectKV addresses this by selectively transmitting KV states at each handoff.
 
 The method has three main components:
 
-- **Receiver-conditioned relevance** — estimates the importance of cached positions using cosine similarity between cached keys and the current hidden-state query/proxy.
+- **Sender-derived relevance** — estimates downstream relevance using cosine similarity between cached keys and a query derived from the sending agent's final hidden state.
 - **KV-native novelty** — identifies distinctive information using adjacent cached-key cosine dissimilarity.
 - **Boundary-aware selection** — protects KV states inherited from previous agents and applies the retention budget only to newly communicable positions.
 
@@ -61,8 +82,8 @@ methods/selectkv_mas.py
 We recommend Python 3.10 and a CUDA-capable GPU with sufficient memory to run Qwen3-4B.
 
 ```bash
-git clone <ANONYMOUS_REPOSITORY_URL>
-cd SelectKV-MAS
+git clone https://github.com/mliao2710/SelectKV.git
+cd SelectKV
 
 conda create -n selectkv python=3.10 -y
 conda activate selectkv
