@@ -1,3 +1,20 @@
+## Code and Branches
+
+The `reproducibility` branch contains the SelectKV
+implementation and experimental setup used for the paper.
+
+Key files:
+- `methods/selectkv_mas.py`: SelectKV implementation
+- `selectkv/`: KV selection utilities
+- `run.py`: Experiment entry point
+- `REPRODUCIBILITY.md`: Reproduction instructions
+- `logs/`: Experiment outputs
+
+Other development branches are preserved for reference:
+- `miles/selectkv`
+- `miles/selectkv-adaptive`
+- `miles/selectkv-rebuild`
+
 # SelectKV-MAS
 
 **Selective KV-cache handoff for efficient latent communication in multi-agent LLM systems.**
